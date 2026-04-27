@@ -118,19 +118,7 @@ pytest
 - Regression tests are essential after ranking-policy changes because control-flow mistakes can silently break diversity guarantees.
 
 ## Reflection
-**What are the limitations or biases in your system?**  
-The recommender is still catalog-bounded and feature-engineered, so it can only choose from what exists in `songs.csv`, and its behavior reflects the feature distributions and labeling choices in that dataset. Weighted scoring may over-prefer whichever genres/moods are more densely represented, and profile blending simplifies real taste into a small set of predefined profile archetypes.
-
-**Could your AI be misused, and how would you prevent that?**  
-A misuse risk is over-trusting recommendations as objective truth or using feedback signals in a way that profiles users too aggressively. To reduce this, the project keeps updates transparent, uses bounded/validated profile changes, allows human override at each step, and logs decisions for auditability; in a production system I would also add stricter privacy rules and explicit consent controls for stored feedback history.
-
-**What surprised you while testing your AI's reliability?**  
-A small control-flow bug (an early return in diversity ranking) was enough to silently disable later guardrails and produce repeated single-genre recommendations, even when alternatives existed. That was a strong reminder that reliability failures are often in orchestration logic, not only in model calls.
-
-**Describe your collaboration with AI during this project. Include one helpful and one flawed suggestion.**  
-AI collaboration was most helpful when iterating quickly on architecture and implementation details, especially for turning the static recommender into a full feedback loop with deterministic fallback and clearer CLI commands (`details all`, same-list vs new-list flow). One flawed AI suggestion occurred during diversity tuning: an earlier version claimed genre variety was enforced, but due to an early-return path it still produced all-same-genre outputs in practice; catching this through runtime checks and then adding regression tests was essential.
-
-This project says I approach AI engineering as a reliability-first systems discipline, not just prompt writing or model calls. I prioritize transparent decision logic, fallback behavior, test coverage, and human-in-the-loop controls so the system stays useful and debuggable even when model responses are imperfect. It also reflects my iterative mindset: I use real runtime evidence to diagnose failures, tighten guardrails, and improve user experience.
+Reflection content has been moved to `model_card.md`.
 
 ## Key Files
 - `src/main.py` - interactive session loop, starter onboarding, Gemini/fallback profile-blend updates, logging.
