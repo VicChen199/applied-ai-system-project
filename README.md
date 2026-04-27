@@ -1,5 +1,8 @@
 # Agentic Music Recommender (Gemini + Feedback Loop)
 
+## Demo Video
+[Watch the demo video](https://www.loom.com/share/ba897569839a403e88f20f56ccb94fb5)
+
 ## Title and Summary
 This project is an interactive music recommender that learns from user feedback over multiple rounds and updates recommendations in-session. It matters because it demonstrates an agentic AI workflow: initialize preferences, gather outcomes, adapt profile state, and re-rank results in a transparent loop.
 
